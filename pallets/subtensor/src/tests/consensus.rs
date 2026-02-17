@@ -9,7 +9,7 @@ use super::mock::*;
 use crate::*;
 
 use frame_support::assert_ok;
-use rand::{Rng, SeedableRng, distributions::Uniform, rngs::StdRng, seq::SliceRandom, thread_rng};
+use rand::{Rng, SeedableRng, distr::Uniform, rngs::StdRng, seq::SliceRandom};
 use sp_core::U256;
 use std::time::Instant;
 use substrate_fixed::transcendental::{PI, cos, ln, sqrt};
@@ -111,7 +111,7 @@ fn distribute_nodes(
     } else if interleave == 2 {
         // random interleaving
         let mut permuted_uids: Vec<u16> = (0..network_n as u16).collect();
-        permuted_uids.shuffle(&mut thread_rng());
+        permuted_uids.shuffle(&mut rand::rng());
         validators = permuted_uids[0..validators_n].into();
         servers = permuted_uids[validators_n..network_n].into();
     }

@@ -6,7 +6,7 @@
 use substrate_fixed::types::{I32F32, I64F64};
 
 use crate::epoch::math::*;
-use rand::{Rng, seq::SliceRandom, thread_rng};
+use rand::{Rng, seq::SliceRandom};
 use substrate_fixed::{
     transcendental::exp,
     types::{I96F32, I110F18},
